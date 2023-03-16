@@ -5,6 +5,8 @@ sudo apt-get install \
     gnupg \
     lsb-release
 
+#install VS Code
+sudo snap install --classic code
 
 https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=20.04&target_type=deb_local
 
@@ -59,7 +61,6 @@ export PATH=$PATH:/usr/local/cuda/bin
 
 
 #Docker Compose setup
-
 
 sudo mkdir -m 0755 -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
