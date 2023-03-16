@@ -11,9 +11,6 @@ sudo apt-get -y install cuda
 sudo apt install nvidia-cuda-toolkit
 sudo ln -s /usr/local/cuda-12.0/bin /usr/local/cuda/bin
 
-export PATH=$PATH:/usr/local/cuda/bin
-
-
 
 #set up nvidia-container-toolkit and docker
 curl -s -L https://nvidia.github.io/nvidia-container-runtime/gpgkey | \
@@ -22,9 +19,6 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
 curl -s -L https://nvidia.github.io/nvidia-container-runtime/$distribution/nvidia-container-runtime.list | \
   sudo tee /etc/apt/sources.list.d/nvidia-container-runtime.list
 sudo apt-get update
-
-
-
 
 sudo apt-get update \
     && sudo apt-get install -y nvidia-container-toolkit-base
@@ -45,8 +39,12 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
 
 sudo apt-get update
 
+#install container toolkit
 sudo apt-get install -y nvidia-container-toolkit
 
+#configuring runtime
 sudo nvidia-ctk runtime configure --runtime=docker
 
 sudo systemctl restart docker
+
+export PATH=$PATH:/usr/local/cuda/bin
